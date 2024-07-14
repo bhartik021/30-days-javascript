@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorite Movies</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        background: #eee;
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 4px;
+      }
+      input[type="text"] {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Favorite Movies</h1>
+      <input type="text" id="movieInput" placeholder="Add a new movie" />
+      <button onclick="addMovie()">Add Movie</button>
+      <ul id="movieList"></ul>
+    </div>
+    <script>
+      let movies = [];
+
+      function addMovie() {
+        let movieInput = document.getElementById("movieInput");
+        let movieName = movieInput.value;
+
+        if (movieName.trim() !== "") {
+          movies.push(movieName);
+          displayMovies();
+          movieInput.value = "";
+        }
+      }
+
+      function displayMovies() {
+        let movieList = document.getElementById("movieList");
+        movieList.innerHTML = "";
+
+        movies.forEach((movie) => {
+          let li = document.createElement("li");
+          li.textContent = movie;
+          movieList.appendChild(li);
+        });
+      }
+    </script>
+  </body>
+</html>
